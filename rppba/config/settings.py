@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'apps',
     'drf_yasg',
+    'apps',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +54,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
-# AUTH_USER_MODEL = 'apps.User'
+AUTH_USER_MODEL = 'apps.User'
 
 TEMPLATES = [
     {
