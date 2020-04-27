@@ -13,3 +13,4 @@ class UserDetailUpdate(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = (permissions.IsAuthenticated, )
+# Лох егор
