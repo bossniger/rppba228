@@ -20,7 +20,6 @@ class User(AbstractUser):
     date_joined = None
     last_login = None
     USERNAME_FIELD = 'username'
-    objects = UserManager
 
     def __str__(self):
         return f'{self.id} {self.role} {self.username}'
