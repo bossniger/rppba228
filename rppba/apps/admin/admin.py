@@ -59,7 +59,7 @@ class OperationsAdmin(admin.ModelAdmin):
 
 class ElementsAdmin(admin.ModelAdmin):
 
-    list_display = ('name', 'type', )
+    list_display = ('depiction', 'type', )
 
 
 class ProductionOrderAdmin(admin.ModelAdmin):
@@ -67,12 +67,12 @@ class ProductionOrderAdmin(admin.ModelAdmin):
 
 
 rppba_admin = RppbaAdminSite(name='rpbba_admin')
+rppba_admin.register(User, RppbaUserAdmin)
 admin.site.unregister(Group)
 rppba_admin.register(Element, ElementsAdmin)
-rppba_admin.register(User, RppbaUserAdmin)
-rppba_admin.register(Product, ProductAdmin)
-rppba_admin.register(Operation, OperationsAdmin)
 rppba_admin.register(OperationsList, OperationsListAdmin)
+rppba_admin.register(Operation, OperationsAdmin)
+rppba_admin.register(Product, ProductAdmin)
 rppba_admin.register(MaterialOrder)
 rppba_admin.register(WarehouseMaterial)
 rppba_admin.register(ProductionOrder)

@@ -15,7 +15,6 @@ class OperationsList(models.Model):
     )
 
     name = models.CharField(max_length=30)
-    element = models.ForeignKey(Element, on_delete=models.CASCADE)
     priority = models.CharField(max_length=50, choices=TYPE_CHOICE)
     product_operations = models.ManyToManyField(Product, through='Operation')
 
@@ -27,6 +26,8 @@ class Operation(models.Model):
 
     operation = models.ForeignKey(OperationsList, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    element = models.ForeignKey(Element, on_delete=models.CASCADE)
+    element_quantity = models.IntegerField(max_length=30)
     time_processing = models.IntegerField(max_length=100)
 
     def __str__(self):
