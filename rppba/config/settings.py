@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'apps',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
-AUTH_USER_MODEL = 'apps.User'
+AUTH_USER_MODEL = 'users.User'
 
 TEMPLATES = [
     {
