@@ -25,6 +25,9 @@ app_name = 'api'
 urlpatterns = [
     path('docs/', include(docs_urlpatterns)),
     path('', api_root),
+
+
+
     path('elements/', ElementListCreateAPIView.as_view()),
     path('elements/<int:id>', ElementUpdateAPIView.as_view()),
     path('orders/', OrdersListAPIView.as_view()),

@@ -16,8 +16,14 @@ Including another URLconf
 from django.urls import path, include
 from api import urls
 from apps.admin.admin import rppba_admin
+from rest_framework_simplejwt import views as jwt_views
+
+from users.views import Register
 
 urlpatterns = [
     path('admin/', rppba_admin.urls),
-    path('api/', include(urls.urlpatterns))
+    path('api/', include(urls.urlpatterns)),
+    path('token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('register/', Register.as_view()),
 ]
