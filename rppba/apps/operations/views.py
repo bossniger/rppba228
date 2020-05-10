@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework import permissions
 from .serializers import OperationsListSerializer, OperationSerializer
 from .models import OperationsList, Operation
-from ..elements.permissions import IsTechnologist
+from users.permissions import IsTechnologist
 
 
 class ProductOperationListCreateListApiView(generics.ListCreateAPIView):

@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework import permissions
 from .serializers import ProductSerializers
 from .models import Product
-from ..elements.permissions import IsTechnologist
+from users.permissions import IsTechnologist
 
 
 class ProductListCreateAPIView(generics.ListCreateAPIView):

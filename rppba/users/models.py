@@ -8,7 +8,6 @@ class User(AbstractUser):
         ('technologist', 'technologist'),
         ('dispatcher', 'dispatcher',),
         ('master_paint_workshop', 'master of the paint shop'),
-        ('master_paint_workshop', 'master of the paint shop'),
         ('master_assembly_workshop', 'assembly shop master'),
         ('master_packing_workshop', 'packing shop master', ),
     )
