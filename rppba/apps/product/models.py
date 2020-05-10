@@ -36,7 +36,6 @@ class Operation(models.Model):
     operation_name = models.CharField(max_length=50)
     priority = models.CharField(max_length=20, choices=priorities, default='Высокий')
 
-
 class OperationForProduct(models.Model):
     operation_id= models.ManyToManyField(Operation)
     product_id = models.ManyToManyField(Product)
