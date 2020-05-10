@@ -6,6 +6,7 @@ from django.utils.translation import gettext, gettext_lazy as _
 from apps.elements.models import Element
 from apps.materials_order.models import MaterialOrder
 from apps.orders.models import Order
+from apps.production_order.models import ProductionOrder
 from apps.products.models import Product
 from apps.operations.models import (
     Operation,
@@ -61,6 +62,10 @@ class ElementsAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', )
 
 
+class ProductionOrderAdmin(admin.ModelAdmin):
+    list_display = ('product_quantity', 'status', 'lead_time_production')
+
+
 rppba_admin = RppbaAdminSite(name='rpbba_admin')
 admin.site.unregister(Group)
 rppba_admin.register(Element, ElementsAdmin)
@@ -70,5 +75,5 @@ rppba_admin.register(Operation, OperationsAdmin)
 rppba_admin.register(OperationsList, OperationsListAdmin)
 rppba_admin.register(MaterialOrder)
 rppba_admin.register(WarehouseMaterial)
+rppba_admin.register(ProductionOrder)
 rppba_admin.register(Order)
-
