@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext, gettext_lazy as _
+from apps.elements.models import Elements
 from users.models import User
 
 
@@ -40,3 +41,4 @@ class RppbaUserAdmin(UserAdmin):
 rppba_admin = RppbaAdminSite(name='rpbba_admin')
 admin.site.unregister(Group)
 rppba_admin.register(User, RppbaUserAdmin)
+rppba_admin.register(Elements)
