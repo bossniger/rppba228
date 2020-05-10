@@ -3,7 +3,17 @@ from django.contrib.admin import AdminSite
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 from django.utils.translation import gettext, gettext_lazy as _
-from apps.elements.models import Elements
+from apps.elements.models import Element
+from apps.materials_order.models import MaterialOrder
+from apps.orders.models import Order
+from apps.production_order.models import ProductionOrder
+from apps.products.models import Product
+from apps.operations.models import (
+    Operation,
+    OperationsList,
+    OperationsInline,
+)
+from apps.warehouse_materials.models import WarehouseMaterial
 from users.models import User
 
 
@@ -14,6 +24,7 @@ class RppbaAdminSite(AdminSite):
 
 
 class RppbaUserAdmin(UserAdmin):
+
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
         (_('Personal info'), {'fields': ('name',)}),
@@ -24,21 +35,45 @@ class RppbaUserAdmin(UserAdmin):
             'fields': ('role',),
         }),
     )
-    list_display = ('username', 'name', 'role', )
+
+    list_display = ('username', 'name', 'role',)
 
 
-# class FeedbackAdmin(admin.ModelAdmin):
-#     list_display = ('date_sending', 'name', 'email', 'is_influencer', 'is_processed')
-#
-#
-# class ShoppingcardAdmin(admin.ModelAdmin):
-#     list_display = ('buyer', 'collection',)
-#
-#
-# class InvitationAdmin(admin.ModelAdmin):
-#     list_display = ('influencer_link', 'date_sending',)
+class ProductAdmin(admin.ModelAdmin):
+
+    list_display = ('model_name', 'type', 'product_time_production',)
+    inlines = [
+        OperationsInline,
+    ]
+
+
+class OperationsListAdmin(admin.ModelAdmin):
+
+    list_display = ('name', 'priority', )
+
+
+class OperationsAdmin(admin.ModelAdmin):
+
+    list_display = ('operation', 'product', 'time_processing')
+
+
+class ElementsAdmin(admin.ModelAdmin):
+
+    list_display = ('name', 'type', )
+
+
+class ProductionOrderAdmin(admin.ModelAdmin):
+    list_display = ('product_quantity', 'status', 'lead_time_production')
+
 
 rppba_admin = RppbaAdminSite(name='rpbba_admin')
 admin.site.unregister(Group)
+rppba_admin.register(Element, ElementsAdmin)
 rppba_admin.register(User, RppbaUserAdmin)
-rppba_admin.register(Elements)
+rppba_admin.register(Product, ProductAdmin)
+rppba_admin.register(Operation, OperationsAdmin)
+rppba_admin.register(OperationsList, OperationsListAdmin)
+rppba_admin.register(MaterialOrder)
+rppba_admin.register(WarehouseMaterial)
+rppba_admin.register(ProductionOrder)
+rppba_admin.register(Order)

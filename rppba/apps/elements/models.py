@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Elements(models.Model):
+class Element(models.Model):
 
     TYPE_CHOICE = (
         ('component', 'component'),

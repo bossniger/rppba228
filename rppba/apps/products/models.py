@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Products(models.Model):
+class Product(models.Model):
 
     TYPE_CHOICE = (
         ('pen', 'pen'),
