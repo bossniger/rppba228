@@ -1,7 +1,7 @@
 from django.db import models
-from apps.elements.models import Elements
+from apps.elements.models import Element
 
 
-class WarehouseMaterials(models.Model):
-    element_id = models.ForeignKey(Elements,models.CASCADE)
-    available_quantity = models.IntegerField()
+class WarehouseMaterial(models.Model):
+    element_id = models.ForeignKey(Element, models.CASCADE)
+    available_quantity = models.IntegerField(max_length=10)

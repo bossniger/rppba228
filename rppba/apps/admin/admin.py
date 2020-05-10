@@ -3,13 +3,16 @@ from django.contrib.admin import AdminSite
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 from django.utils.translation import gettext, gettext_lazy as _
-from apps.elements.models import Elements
+from apps.elements.models import Element
+from apps.materials_order.models import MaterialOrder
+from apps.orders.models import Order
 from apps.products.models import Product
 from apps.operations.models import (
-    Operations,
+    Operation,
     OperationsList,
     OperationsInline,
 )
+from apps.warehouse_materials.models import WarehouseMaterial
 from users.models import User
 
 
@@ -60,8 +63,12 @@ class ElementsAdmin(admin.ModelAdmin):
 
 rppba_admin = RppbaAdminSite(name='rpbba_admin')
 admin.site.unregister(Group)
-rppba_admin.register(Elements, ElementsAdmin)
+rppba_admin.register(Element, ElementsAdmin)
 rppba_admin.register(User, RppbaUserAdmin)
 rppba_admin.register(Product, ProductAdmin)
-rppba_admin.register(Operations, OperationsAdmin)
+rppba_admin.register(Operation, OperationsAdmin)
 rppba_admin.register(OperationsList, OperationsListAdmin)
+rppba_admin.register(MaterialOrder)
+rppba_admin.register(WarehouseMaterial)
+rppba_admin.register(Order)
+

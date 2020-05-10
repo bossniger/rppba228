@@ -1,6 +1,6 @@
 from django.db import models
 
 
-class Orders(models.Model):
-    product_name = models.CharField()
-    quantity = models.IntegerField()
+class Order(models.Model):
+    product_name = models.CharField(max_length=100)
+    quantity = models.IntegerField(max_length=10)
