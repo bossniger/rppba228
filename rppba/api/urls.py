@@ -39,7 +39,7 @@ urlpatterns = [
     path('operation_list/<id>', OperationListUpdateApiView.as_view()),
     path('product_operation/', ProductOperationListCreateListApiView.as_view()),
     path('product_operation/<id>', ProductOperationUpdateApiView.as_view()),
-    path('product', ProductListCreateAPIView.as_view()),
+    path('product/', ProductListCreateAPIView.as_view()),
     path('product/<int:id>', ProductUpdateAPIView.as_view()),
     path('production_order', ProductionOrderListCreateAPIView.as_view()),
     path('production_order/<id>', ProductionOrderUpdateAPIView.as_view()),
