@@ -6,7 +6,6 @@ from ..elements.permissions import IsTechnologist
 
 
 class ProductListCreateAPIView(generics.ListCreateAPIView):
-
     serializer_class = ProductSerializers
     queryset = Product.objects.all()
     permission_action_classes = {
@@ -27,6 +26,14 @@ class ProductUpdateAPIView(generics.RetrieveUpdateDestroyAPIView):
 
     serializer_class = ProductSerializers
     queryset = Product.objects.all()
-    permission_classes = [
-        permissions.AllowAny,
-    ]
+
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [
+                permissions.IsAuthenticated(),
+            ]
+        else:
+            return [
+                permissions.IsAuthenticated(),
+                IsTechnologist(),
+            ]
