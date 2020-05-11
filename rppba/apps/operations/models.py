@@ -3,7 +3,6 @@ from django.contrib import admin
 
 from apps.elements.models import Element
 from apps.products.models import Product
-'кек'
 
 
 class OperationsList(models.Model):
