@@ -7,9 +7,10 @@ class User(AbstractUser):
     ROLE_CHOICE = (
         ('technologist', 'technologist'),
         ('dispatcher', 'dispatcher',),
-        ('master of the paint shop', 'master_paint_workshop'),
-        ('assembly shop master', 'master_assembly_workshop'),
-        ('packing shop master', 'master_packing_workshop'),
+        ('master_paint_workshop', 'master of the paint shop'),
+        ('master_paint_workshop', 'master of the paint shop'),
+        ('master_assembly_workshop', 'assembly shop master'),
+        ('master_packing_workshop', 'packing shop master', ),
     )
 
     username = models.CharField(

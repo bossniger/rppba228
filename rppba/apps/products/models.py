@@ -14,3 +14,14 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.type} {self.model_name}'
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        operations = self.operations_ref.all()
+        count = 0
+        for operation in operations:
+            count += operation.time_processing
+
+        self.product_time_production = str(count)
+
+        super().save()
