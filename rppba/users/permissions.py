@@ -29,3 +29,9 @@ class IsMasterPackingWorkshop(BasePermission):
 
     def has_permission(self, request, view):
         return request.user.role == 'master_packing_workshop'
+
+
+class IsMasterOrDispatcher(BasePermission):
+
+    def has_permission(self, request, view):
+        return request.user.role == 'master_paint_workshop' or 'master_packing_workshop' or 'master_assembly_workshop' or 'dispatcher'

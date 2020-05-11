@@ -8,10 +8,15 @@ from apps.elements.serializers import ElementsSerializer
 class ElementListCreateAPIView(ListCreateAPIView):
     queryset = Element.objects.all()
     serializer_class = ElementsSerializer
-    permission_classes = (
-        permissions.IsAuthenticated,
-        IsTechnologist(),
-    )
+    permission_action_classes = {
+        'POST': [
+            permissions.IsAuthenticated(),
+            IsMasterOrDispatcher(),
+        ],
+        'GET': [
+            permissions.IsAuthenticated(),
+        ],
+    }
     
 
 class ElementUpdateAPIView(RetrieveUpdateDestroyAPIView):
