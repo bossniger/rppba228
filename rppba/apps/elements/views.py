@@ -11,7 +11,7 @@ class ElementListCreateAPIView(ListCreateAPIView):
     permission_action_classes = {
         'POST': [
             permissions.IsAuthenticated(),
-            IsMasterOrDispatcher(),
+            IsTechnologist(),
         ],
         'GET': [
             permissions.IsAuthenticated(),
@@ -23,6 +23,6 @@ class ElementUpdateAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Element.objects.all()
     serializer_class = ElementsSerializer
     permission_classes = [
-        # permissions.IsAuthenticated,
-        # IsTechnologist,
+        permissions.IsAuthenticated,
+        IsTechnologist,
     ]
