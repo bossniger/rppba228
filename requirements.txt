@@ -13,7 +13,7 @@ itypes==1.2.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
 packaging==20.3
-PyJWT==1.7.1
+PyJWT==2.4.0
 pyparsing==2.4.7
 pytz==2019.3
 requests==2.23.0
